@@ -3,48 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AX SPORTS - Vitrine Esportiva</title>
+    <title>AX SPORTS | Loja Oficial • Moda Esportiva e Alta Performance</title>
     <link rel="stylesheet" href="style.css">
     <!-- Ícones do FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <!-- Cabeçalho -->
+    <!-- Barra Superior de Avisos -->
+    <div class="top-bar">
+        <span>⚡ Envio Para Todo o Brasil • Atendimento Personalizado via WhatsApp</span>
+    </div>
+
+    <!-- Cabeçalho Principal -->
     <header>
         <div class="logo">
-            <i class="fa-solid fa-bolt"></i> <span>AX SPORTS</span>
+            <i class="fa-solid fa-bolt"></i> <span>AX <strong>SPORTS</strong></span>
         </div>
         <nav>
             <a href="#produtos">Vitrine</a>
-            <a href="https://wa.me/5500000000000?text=Olá!%20Vim%20pelo%20site%20da%20AX%20SPORTS." target="_blank" class="btn-whats-nav">
-                <i class="fa-brands fa-whatsapp"></i> Contato
+            <a href="#beneficios">Diferenciais</a>
+            <a href="https://wa.me/5500000000000?text=Olá!%20Vim%20pelo%20site%20da%20AX%20SPORTS%20e%20gostaria%20de%20atendimento." target="_blank" class="btn-whats-nav">
+                <i class="fa-brands fa-whatsapp"></i> Fale Conosco
             </a>
         </nav>
     </header>
 
-    <!-- Banner Principal -->
+    <!-- Banner Principal (Hero) -->
     <section class="hero">
         <div class="hero-content">
+            <span class="badge-hero">Coleção Oficial</span>
             <h1>Sua Paixão em Campo e no Treino</h1>
-            <p>As melhores camisetas de times nacionais e internacionais, além de roupas de alta performance para sua academia.</p>
-            <a href="#produtos" class="btn-cta">Ver Vitrine</a>
+            <p>Vista os mantos sagrados dos principais times do mundo e roupas de alta performance com qualidade premium.</p>
+            <div class="hero-buttons">
+                <a href="#produtos" class="btn-cta">Explorar Vitrine</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Benefícios (Passa Confiança) -->
+    <section id="beneficios" class="beneficios">
+        <div class="beneficio-item">
+            <i class="fa-solid fa-shield-halved"></i>
+            <div>
+                <h4>Compra 100% Segura</h4>
+                <p>Atendimento direto e transparente via WhatsApp</p>
+            </div>
+        </div>
+        <div class="beneficio-item">
+            <i class="fa-solid fa-truck-fast"></i>
+            <div>
+                <h4>Entrega Garantida</h4>
+                <p>Enviamos para o seu endereço com código de rastreio</p>
+            </div>
+        </div>
+        <div class="beneficio-item">
+            <i class="fa-solid fa-star"></i>
+            <div>
+                <h4>Qualidade Premium</h4>
+                <p>Tecidos de alta durabilidade e acabamento impecável</p>
+            </div>
         </div>
     </section>
 
     <!-- Vitrine de Produtos -->
     <section id="produtos" class="produtos-container">
-        <h2>Nossos Destaques</h2>
+        <div class="section-title">
+            <h2>Destaques da Semana</h2>
+            <p>Escolha o seu modelo favorito e garanta o seu</p>
+        </div>
         
         <div class="grid-produtos">
 
             <!-- Produto 1 -->
             <div class="card-produto">
                 <span class="tag-time">Mais Vendida</span>
-                <img src="https://images.unsplash.com/photo-1580087600307-a64ddf74044a?auto=format&fit=crop&w=600&q=80" alt="Camisa de Time">
+                <div class="produto-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1580087600307-a64ddf74044a?auto=format&fit=crop&w=600&q=80" alt="Camisa de Time">
+                </div>
                 <div class="card-info">
                     <h3>Camisa Titular Temporada</h3>
-                    <p class="categoria">Futebol • Alta Qualidade</p>
+                    <p class="categoria">Futebol • Versão Torcedor</p>
                     <div class="preco-container">
                         <span class="preco">R$ 149,90</span>
                     </div>
@@ -57,7 +96,9 @@
             <!-- Produto 2 -->
             <div class="card-produto">
                 <span class="tag-time">Lançamento</span>
-                <img src="https://images.unsplash.com/photo-1518063319789-7217e6adc59e?auto=format&fit=crop&w=600&q=80" alt="Camisa Internacional">
+                <div class="produto-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1518063319789-7217e6adc59e?auto=format&fit=crop&w=600&q=80" alt="Camisa Internacional">
+                </div>
                 <div class="card-info">
                     <h3>Camisa Europeia Temporada Atual</h3>
                     <p class="categoria">Futebol Internacional</p>
@@ -73,10 +114,12 @@
             <!-- Produto 3 -->
             <div class="card-produto">
                 <span class="tag-gym">Academia</span>
-                <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=600&q=80" alt="Roupa de Academia">
+                <div class="produto-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=600&q=80" alt="Roupa de Academia">
+                </div>
                 <div class="card-info">
                     <h3>Camiseta Dry-Fit Treino Performance</h3>
-                    <p class="categoria">Moda Fitness</p>
+                    <p class="categoria">Moda Fitness • Alta Absorção</p>
                     <div class="preco-container">
                         <span class="preco">R$ 79,90</span>
                     </div>
@@ -89,10 +132,12 @@
             <!-- Produto 4 -->
             <div class="card-produto">
                 <span class="tag-time">Edição Limitada</span>
-                <img src="https://images.unsplash.com/photo-1577471488278-16eec3ffccbc?auto=format&fit=crop&w=600&q=80" alt="Camisa de Seleção">
+                <div class="produto-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1577471488278-16eec3ffccbc?auto=format&fit=crop&w=600&q=80" alt="Camisa de Seleção">
+                </div>
                 <div class="card-info">
                     <h3>Camisa Seleção Mundial</h3>
-                    <p class="categoria">Futebol • Torcedor</p>
+                    <p class="categoria">Futebol • Edição Especial</p>
                     <div class="preco-container">
                         <span class="preco">R$ 149,90</span>
                     </div>
@@ -107,7 +152,13 @@
 
     <!-- Rodapé -->
     <footer>
-        <p>&copy; 2026 AX SPORTS. Todos os direitos reservados.</p>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <i class="fa-solid fa-bolt"></i> AX <strong>SPORTS</strong>
+            </div>
+            <p>Sua loja especializada em artigos esportivos e camisas de time.</p>
+            <p class="copyright">&copy; 2026 AX SPORTS. Todos os direitos reservados.</p>
+        </div>
     </footer>
 
 </body>
