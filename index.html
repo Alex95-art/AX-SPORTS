@@ -17,7 +17,6 @@
 
     <!-- Cabeçalho Principal -->
     <header>
-        <!-- Título da Loja Bem Maior -->
         <div class="logo-grande">
             <i class="fa-solid fa-bolt"></i> <span>AX <strong>SPORTS</strong></span>
         </div>
@@ -31,29 +30,49 @@
             <button class="color-btn" style="background-color: #0f172a;" onclick="mudarTema('#0f172a', '#475569')" title="Preto"></button>
         </div>
 
-        <!-- Botão de Menu Lateral (Hambúrguer) e Opções -->
-        <div class="menu-container">
-            <button class="menu-toggle-btn" onclick="toggleMenu()" title="Abrir Menu">
-                <i class="fa-solid fa-bars"></i> Opções
+        <!-- Botões do Topo (Menu e Carrinho) -->
+        <div class="header-actions">
+            <!-- Botão do Carrinho -->
+            <button class="cart-btn" onclick="toggleCart()" title="Abrir Carrinho">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span id="cartCount" class="cart-count">0</span>
             </button>
-            
-            <!-- Caixa do Menu que Abre -->
-            <div id="dropdownMenu" class="dropdown-content">
-                <a href="#produtos"><i class="fa-solid fa-store"></i> Ver Vitrine</a>
-                <a href="#beneficios"><i class="fa-solid fa-shield-halved"></i> Nossos Diferenciais</a>
-                <a href="https://wa.me/5500000000000?text=Olá!%20Vim%20pelo%20site%20da%20AX%20SPORTS." target="_blank"><i class="fa-solid fa-headset"></i> Suporte Geral</a>
-                <a href="#" onclick="alert('Seja bem-vindo à AX SPORTS! Novas opções em breve.')"><i class="fa-solid fa-circle-info"></i> Sobre a Loja</a>
+
+            <!-- Menu Lateral (Hambúrguer) -->
+            <div class="menu-container">
+                <button class="menu-toggle-btn" onclick="toggleMenu()" title="Abrir Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <div id="dropdownMenu" class="dropdown-content">
+                    <a href="#produtos"><i class="fa-solid fa-store"></i> Ver Vitrine</a>
+                    <a href="#beneficios"><i class="fa-solid fa-shield-halved"></i> Nossos Diferenciais</a>
+                    <a href="https://wa.me/5500000000000?text=Olá!%20Vim%20pelo%20site%20da%20AX%20SPORTS." target="_blank"><i class="fa-solid fa-headset"></i> Suporte Geral</a>
+                </div>
             </div>
         </div>
-
-        <nav class="nav-desktop">
-            <a href="#produtos">Vitrine</a>
-            <a href="#beneficios">Diferenciais</a>
-            <a href="https://wa.me/5500000000000?text=Olá!%20Vim%20pelo%20site%20da%20AX%20SPORTS." target="_blank" class="btn-whats-nav">
-                <i class="fa-brands fa-whatsapp"></i> Fale Conosco
-            </a>
-        </nav>
     </header>
+
+    <!-- Gaveta Lateral do Carrinho (Drawer) -->
+    <div id="cartDrawer" class="cart-drawer">
+        <div class="cart-header">
+            <h3><i class="fa-solid fa-bag-shopping"></i> Sua Sacola</h3>
+            <button class="close-cart" onclick="toggleCart()">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItemsContainer">
+            <!-- Os produtos adicionados aparecem aqui via JavaScript -->
+            <p class="cart-empty">Sua sacola está vazia.</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <strong id="cartTotalPrice">R$ 0,00</strong>
+            </div>
+            <button class="btn-checkout" onclick="finalizarCompraWhatsApp()">
+                <i class="fa-brands fa-whatsapp"></i> Finalizar Pedido no WhatsApp
+            </button>
+        </div>
+    </div>
+    <div id="cartOverlay" class="cart-overlay" onclick="toggleCart()"></div>
 
     <!-- Banner Principal (Hero) -->
     <section class="hero">
@@ -96,13 +115,13 @@
     <section id="produtos" class="produtos-container">
         <div class="section-title">
             <h2>Destaques da Semana</h2>
-            <p>Escolha o tamanho e garanta o seu modelo favorito</p>
+            <p>Escolha o tamanho e adicione à sua sacola</p>
         </div>
         
         <div class="grid-produtos">
 
             <!-- Produto 1 -->
-            <div class="card-produto">
+            <div class="card-produto" data-id="1" data-nome="Camisa Titular Temporada" data-preco="149.90" data-img="https://images.unsplash.com/photo-1580087600307-a64ddf74044a?auto=format&fit=crop&w=600&q=80">
                 <span class="tag-time">Mais Vendida</span>
                 <div class="produto-img-wrapper">
                     <img src="https://images.unsplash.com/photo-1580087600307-a64ddf74044a?auto=format&fit=crop&w=600&q=80" alt="Camisa de Time">
@@ -124,14 +143,14 @@
                     <div class="preco-container">
                         <span class="preco">R$ 149,90</span>
                     </div>
-                    <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20comprar%20a%20Camisa%20Titular." target="_blank" class="btn-comprar">
-                        <i class="fa-brands fa-whatsapp"></i> Pedir no WhatsApp
-                    </a>
+                    <button class="btn-comprar" onclick="adicionarAoCarrinho(this)">
+                        <i class="fa-solid fa-cart-plus"></i> Adicionar à Sacola
+                    </button>
                 </div>
             </div>
 
             <!-- Produto 2 -->
-            <div class="card-produto">
+            <div class="card-produto" data-id="2" data-nome="Camisa Europeia Atual" data-preco="159.90" data-img="https://images.unsplash.com/photo-1518063319789-7217e6adc59e?auto=format&fit=crop&w=600&q=80">
                 <span class="tag-time">Lançamento</span>
                 <div class="produto-img-wrapper">
                     <img src="https://images.unsplash.com/photo-1518063319789-7217e6adc59e?auto=format&fit=crop&w=600&q=80" alt="Camisa Internacional">
@@ -153,14 +172,14 @@
                     <div class="preco-container">
                         <span class="preco">R$ 159,90</span>
                     </div>
-                    <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20comprar%20a%20Camisa%20Europeia." target="_blank" class="btn-comprar">
-                        <i class="fa-brands fa-whatsapp"></i> Pedir no WhatsApp
-                    </a>
+                    <button class="btn-comprar" onclick="adicionarAoCarrinho(this)">
+                        <i class="fa-solid fa-cart-plus"></i> Adicionar à Sacola
+                    </button>
                 </div>
             </div>
 
             <!-- Produto 3 -->
-            <div class="card-produto">
+            <div class="card-produto" data-id="3" data-nome="Camiseta Dry-Fit Treino" data-preco="79.90" data-img="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=600&q=80">
                 <span class="tag-gym">Academia</span>
                 <div class="produto-img-wrapper">
                     <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=600&q=80" alt="Roupa de Academia">
@@ -182,14 +201,14 @@
                     <div class="preco-container">
                         <span class="preco">R$ 79,90</span>
                     </div>
-                    <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20comprar%20a%20Camiseta%20Dry-Fit." target="_blank" class="btn-comprar">
-                        <i class="fa-brands fa-whatsapp"></i> Pedir no WhatsApp
-                    </a>
+                    <button class="btn-comprar" onclick="adicionarAoCarrinho(this)">
+                        <i class="fa-solid fa-cart-plus"></i> Adicionar à Sacola
+                    </button>
                 </div>
             </div>
 
             <!-- Produto 4 -->
-            <div class="card-produto">
+            <div class="card-produto" data-id="4" data-nome="Camisa Seleção Mundial" data-preco="149.90" data-img="https://images.unsplash.com/photo-1577471488278-16eec3ffccbc?auto=format&fit=crop&w=600&q=80">
                 <span class="tag-time">Edição Limitada</span>
                 <div class="produto-img-wrapper">
                     <img src="https://images.unsplash.com/photo-1577471488278-16eec3ffccbc?auto=format&fit=crop&w=600&q=80" alt="Camisa de Seleção">
@@ -211,9 +230,9 @@
                     <div class="preco-container">
                         <span class="preco">R$ 149,90</span>
                     </div>
-                    <a href="https://wa.me/5500000000000?text=Olá!%20Tenho%20interesse%20na%20Camisa%20da%20Seleção." target="_blank" class="btn-comprar">
-                        <i class="fa-brands fa-whatsapp"></i> Pedir no WhatsApp
-                    </a>
+                    <button class="btn-comprar" onclick="adicionarAoCarrinho(this)">
+                        <i class="fa-solid fa-cart-plus"></i> Adicionar à Sacola
+                    </button>
                 </div>
             </div>
 
@@ -231,8 +250,15 @@
         </div>
     </footer>
 
-    <!-- Script de Interatividade (Cores, Tamanhos e Menu) -->
+    <!-- MOTOR DE JAVASCRIPT AVANÇADO DO E-COMMERCE -->
     <script>
+        let carrinho = JSON.parse(localStorage.getItem('ax_carrinho')) || [];
+
+        // Atualiza a interface ao carregar a página
+        document.addEventListener('DOMContentLoaded', () => {
+            atualizarCarrinhoUI();
+        });
+
         function mudarTema(corPrincipal, corSecundaria) {
             document.documentElement.style.setProperty('--cor-primaria', corPrincipal);
             document.documentElement.style.setProperty('--cor-secundaria', corSecundaria);
@@ -252,7 +278,129 @@
             menu.classList.toggle('show');
         }
 
-        // Fecha o menu se o usuário clicar fora dele
+        function toggleCart() {
+            const drawer = document.getElementById('cartDrawer');
+            const overlay = document.getElementById('cartOverlay');
+            drawer.classList.toggle('open');
+            overlay.classList.toggle('open');
+        }
+
+        function adicionarAoCarrinho(botao) {
+            const card = botao.closest('.card-produto');
+            const id = card.getAttribute('data-id');
+            const nome = card.getAttribute('data-nome');
+            const preco = parseFloat(card.getAttribute('data-preco'));
+            const imagem = card.getAttribute('data-img');
+            
+            // Pega o tamanho selecionado
+            const botaoTamanhoAtivo = card.querySelector('.btn-tamanho.ativo');
+            const tamanho = botaoTamanhoAtivo ? botaoTamanhoAtivo.innerText : 'M';
+
+            // Verifica se o mesmo produto com o mesmo tamanho já está no carrinho
+            const itemExistente = carrinho.find(item => item.id === id && item.tamanho === tamanho);
+
+            if (itemExistente) {
+                itemExistente.quantidade += 1;
+            } else {
+                carrinho.push({
+                    id: id,
+                    nome: nome,
+                    preco: preco,
+                    imagem: imagem,
+                    tamanho: tamanho,
+                    quantidade: 1
+                });
+            }
+
+            salvarCarrinho();
+            atualizarCarrinhoUI();
+            toggleCart(); // Abre a gaveta do carrinho automaticamente
+        }
+
+        function alterarQuantidade(id, tamanho, delta) {
+            const item = carrinho.find(i => i.id === id && i.tamanho === tamanho);
+            if (item) {
+                item.quantidade += delta;
+                if (item.quantidade <= 0) {
+                    carrinho = carrinho.filter(i => !(i.id === id && i.tamanho === tamanho));
+                }
+            }
+            salvarCarrinho();
+            atualizarCarrinhoUI();
+        }
+
+        function salvarCarrinho() {
+            localStorage.setItem('ax_carrinho', JSON.stringify(carrinho));
+        }
+
+        function atualizarCarrinhoUI() {
+            const container = document.getElementById('cartItemsContainer');
+            const countBadge = document.getElementById('cartCount');
+            const totalPriceEl = document.getElementById('cartTotalPrice');
+
+            // Total de itens na badge
+            const totalItens = carrinho.reduce((acc, item) => acc + item.quantidade, 0);
+            countBadge.innerText = totalItens;
+
+            if (carrinho.length === 0) {
+                container.innerHTML = `<p class="cart-empty">Sua sacola está vazia.</p>`;
+                totalPriceEl.innerText = 'R$ 0,00';
+                return;
+            }
+
+            let html = '';
+            let totalPreco = 0;
+
+            carrinho.forEach(item => {
+                const subtotal = item.preco * item.quantidade;
+                totalPreco += subtotal;
+
+                html += `
+                    <div class="cart-item">
+                        <img src="${item.imagem}" alt="${item.nome}">
+                        <div class="cart-item-details">
+                            <h4>${item.nome}</h4>
+                            <p class="cart-item-size">Tam: <strong>${item.tamanho}</strong></p>
+                            <p class="cart-item-price">R$ ${item.preco.toFixed(2).replace('.', ',')}</p>
+                            <div class="cart-item-qty">
+                                <button onclick="alterarQuantidade('${item.id}', '${item.tamanho}', -1)">-</button>
+                                <span>${item.quantidade}</span>
+                                <button onclick="alterarQuantidade('${item.id}', '${item.tamanho}', 1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+            totalPriceEl.innerText = `R$ ${totalPreco.toFixed(2).replace('.', ',')}`;
+        }
+
+        function finalizarCompraWhatsApp() {
+            if (carrinho.length === 0) {
+                alert('Sua sacola está vazia!');
+                return;
+            }
+
+            let mensagem = "🛒 *NOVO PEDIDO - AX SPORTS*\n\n";
+            let total = 0;
+
+            carrinho.forEach((item, index) => {
+                const subtotal = item.preco * item.quantidade;
+                total += subtotal;
+                mensagem += `${index + 1}. *${item.nome}*\n   Tamanho: ${item.tamanho} | Qtd: ${item.quantidade} | Subtotal: R$ ${subtotal.toFixed(2).replace('.', ',')}\n\n`;
+            });
+
+            mensagem += `💰 *Valor Total do Pedido:* R$ ${total.toFixed(2).replace('.', ',')}\n\nPor favor, gostaria de prosseguir com o pagamento e entrega!`;
+
+            // Substitua pelos seus números de WhatsApp com DDI e DDD (ex: 5531999999999)
+            const numeroWhatsApp = "5500000000000"; 
+            const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
+            
+            window.open(url, '_blank');
+        }
+
+        // Fecha menus ao clicar fora
         window.onclick = function(event) {
             if (!event.target.matches('.menu-toggle-btn') && !event.target.matches('.menu-toggle-btn *')) {
                 const menu = document.getElementById('dropdownMenu');
