@@ -17,13 +17,39 @@
 
     <!-- Cabeçalho Principal -->
     <header>
-        <div class="logo">
+        <!-- Título da Loja Bem Maior -->
+        <div class="logo-grande">
             <i class="fa-solid fa-bolt"></i> <span>AX <strong>SPORTS</strong></span>
         </div>
-        <nav>
+
+        <!-- Seletor de Cores -->
+        <div class="theme-switcher">
+            <span class="theme-label">Tema:</span>
+            <button class="color-btn" style="background-color: #0284c7;" onclick="mudarTema('#0284c7', '#38bdf8')" title="Azul"></button>
+            <button class="color-btn" style="background-color: #16a34a;" onclick="mudarTema('#16a34a', '#22c55e')" title="Verde"></button>
+            <button class="color-btn" style="background-color: #7c3aed;" onclick="mudarTema('#7c3aed', '#a855f7')" title="Roxo"></button>
+            <button class="color-btn" style="background-color: #0f172a;" onclick="mudarTema('#0f172a', '#475569')" title="Preto"></button>
+        </div>
+
+        <!-- Botão de Menu Lateral (Hambúrguer) e Opções -->
+        <div class="menu-container">
+            <button class="menu-toggle-btn" onclick="toggleMenu()" title="Abrir Menu">
+                <i class="fa-solid fa-bars"></i> Opções
+            </button>
+            
+            <!-- Caixa do Menu que Abre -->
+            <div id="dropdownMenu" class="dropdown-content">
+                <a href="#produtos"><i class="fa-solid fa-store"></i> Ver Vitrine</a>
+                <a href="#beneficios"><i class="fa-solid fa-shield-halved"></i> Nossos Diferenciais</a>
+                <a href="https://wa.me/5500000000000?text=Olá!%20Vim%20pelo%20site%20da%20AX%20SPORTS." target="_blank"><i class="fa-solid fa-headset"></i> Suporte Geral</a>
+                <a href="#" onclick="alert('Seja bem-vindo à AX SPORTS! Novas opções em breve.')"><i class="fa-solid fa-circle-info"></i> Sobre a Loja</a>
+            </div>
+        </div>
+
+        <nav class="nav-desktop">
             <a href="#produtos">Vitrine</a>
             <a href="#beneficios">Diferenciais</a>
-            <a href="https://wa.me/5500000000000?text=Olá!%20Vim%20pelo%20site%20da%20AX%20SPORTS%20e%20gostaria%20de%20atendimento." target="_blank" class="btn-whats-nav">
+            <a href="https://wa.me/5500000000000?text=Olá!%20Vim%20pelo%20site%20da%20AX%20SPORTS." target="_blank" class="btn-whats-nav">
                 <i class="fa-brands fa-whatsapp"></i> Fale Conosco
             </a>
         </nav>
@@ -41,27 +67,27 @@
         </div>
     </section>
 
-    <!-- Seção de Benefícios (Passa Confiança) -->
+    <!-- Seção de Benefícios -->
     <section id="beneficios" class="beneficios">
         <div class="beneficio-item">
             <i class="fa-solid fa-shield-halved"></i>
             <div>
                 <h4>Compra 100% Segura</h4>
-                <p>Atendimento direto e transparente via WhatsApp</p>
+                <p>Atendimento transparente via WhatsApp</p>
             </div>
         </div>
         <div class="beneficio-item">
             <i class="fa-solid fa-truck-fast"></i>
             <div>
                 <h4>Entrega Garantida</h4>
-                <p>Enviamos para o seu endereço com código de rastreio</p>
+                <p>Enviamos com código de rastreio</p>
             </div>
         </div>
         <div class="beneficio-item">
             <i class="fa-solid fa-star"></i>
             <div>
                 <h4>Qualidade Premium</h4>
-                <p>Tecidos de alta durabilidade e acabamento impecável</p>
+                <p>Tecidos de alta durabilidade</p>
             </div>
         </div>
     </section>
@@ -70,7 +96,7 @@
     <section id="produtos" class="produtos-container">
         <div class="section-title">
             <h2>Destaques da Semana</h2>
-            <p>Escolha o seu modelo favorito e garanta o seu</p>
+            <p>Escolha o tamanho e garanta o seu modelo favorito</p>
         </div>
         
         <div class="grid-produtos">
@@ -84,10 +110,21 @@
                 <div class="card-info">
                     <h3>Camisa Titular Temporada</h3>
                     <p class="categoria">Futebol • Versão Torcedor</p>
+                    
+                    <div class="tamanhos-container">
+                        <span class="label-tamanho">Tamanho:</span>
+                        <div class="tamanhos-botoes">
+                            <button class="btn-tamanho" onclick="selecionarTamanho(this)">P</button>
+                            <button class="btn-tamanho ativo" onclick="selecionarTamanho(this)">M</button>
+                            <button class="btn-tamanho" onclick="selecionarTamanho(this)">G</button>
+                            <button class="btn-tamanho" onclick="selecionarTamanho(this)">GG</button>
+                        </div>
+                    </div>
+
                     <div class="preco-container">
                         <span class="preco">R$ 149,90</span>
                     </div>
-                    <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20comprar%20a%20Camisa%20Titular%20na%20AX%20SPORTS." target="_blank" class="btn-comprar">
+                    <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20comprar%20a%20Camisa%20Titular." target="_blank" class="btn-comprar">
                         <i class="fa-brands fa-whatsapp"></i> Pedir no WhatsApp
                     </a>
                 </div>
@@ -100,12 +137,23 @@
                     <img src="https://images.unsplash.com/photo-1518063319789-7217e6adc59e?auto=format&fit=crop&w=600&q=80" alt="Camisa Internacional">
                 </div>
                 <div class="card-info">
-                    <h3>Camisa Europeia Temporada Atual</h3>
+                    <h3>Camisa Europeia Atual</h3>
                     <p class="categoria">Futebol Internacional</p>
+                    
+                    <div class="tamanhos-container">
+                        <span class="label-tamanho">Tamanho:</span>
+                        <div class="tamanhos-botoes">
+                            <button class="btn-tamanho" onclick="selecionarTamanho(this)">P</button>
+                            <button class="btn-tamanho ativo" onclick="selecionarTamanho(this)">M</button>
+                            <button class="btn-tamanho" onclick="selecionarTamanho(this)">G</button>
+                            <button class="btn-tamanho" onclick="selecionarTamanho(this)">GG</button>
+                        </div>
+                    </div>
+
                     <div class="preco-container">
                         <span class="preco">R$ 159,90</span>
                     </div>
-                    <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20comprar%20a%20Camisa%20Europeia%20na%20AX%20SPORTS." target="_blank" class="btn-comprar">
+                    <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20comprar%20a%20Camisa%20Europeia." target="_blank" class="btn-comprar">
                         <i class="fa-brands fa-whatsapp"></i> Pedir no WhatsApp
                     </a>
                 </div>
@@ -118,12 +166,23 @@
                     <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=600&q=80" alt="Roupa de Academia">
                 </div>
                 <div class="card-info">
-                    <h3>Camiseta Dry-Fit Treino Performance</h3>
+                    <h3>Camiseta Dry-Fit Treino</h3>
                     <p class="categoria">Moda Fitness • Alta Absorção</p>
+                    
+                    <div class="tamanhos-container">
+                        <span class="label-tamanho">Tamanho:</span>
+                        <div class="tamanhos-botoes">
+                            <button class="btn-tamanho" onclick="selecionarTamanho(this)">P</button>
+                            <button class="btn-tamanho ativo" onclick="selecionarTamanho(this)">M</button>
+                            <button class="btn-tamanho" onclick="selecionarTamanho(this)">G</button>
+                            <button class="btn-tamanho" onclick="selecionarTamanho(this)">GG</button>
+                        </div>
+                    </div>
+
                     <div class="preco-container">
                         <span class="preco">R$ 79,90</span>
                     </div>
-                    <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20comprar%20a%20Camiseta%20Dry-Fit%20na%20AX%20SPORTS." target="_blank" class="btn-comprar">
+                    <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20comprar%20a%20Camiseta%20Dry-Fit." target="_blank" class="btn-comprar">
                         <i class="fa-brands fa-whatsapp"></i> Pedir no WhatsApp
                     </a>
                 </div>
@@ -138,10 +197,21 @@
                 <div class="card-info">
                     <h3>Camisa Seleção Mundial</h3>
                     <p class="categoria">Futebol • Edição Especial</p>
+                    
+                    <div class="tamanhos-container">
+                        <span class="label-tamanho">Tamanho:</span>
+                        <div class="tamanhos-botoes">
+                            <button class="btn-tamanho" onclick="selecionarTamanho(this)">P</button>
+                            <button class="btn-tamanho ativo" onclick="selecionarTamanho(this)">M</button>
+                            <button class="btn-tamanho" onclick="selecionarTamanho(this)">G</button>
+                            <button class="btn-tamanho" onclick="selecionarTamanho(this)">GG</button>
+                        </div>
+                    </div>
+
                     <div class="preco-container">
                         <span class="preco">R$ 149,90</span>
                     </div>
-                    <a href="https://wa.me/5500000000000?text=Olá!%20Tenho%20interesse%20na%20Camisa%20da%20Seleção%20pela%20AX%20SPORTS." target="_blank" class="btn-comprar">
+                    <a href="https://wa.me/5500000000000?text=Olá!%20Tenho%20interesse%20na%20Camisa%20da%20Seleção." target="_blank" class="btn-comprar">
                         <i class="fa-brands fa-whatsapp"></i> Pedir no WhatsApp
                     </a>
                 </div>
@@ -161,5 +231,36 @@
         </div>
     </footer>
 
+    <!-- Script de Interatividade (Cores, Tamanhos e Menu) -->
+    <script>
+        function mudarTema(corPrincipal, corSecundaria) {
+            document.documentElement.style.setProperty('--cor-primaria', corPrincipal);
+            document.documentElement.style.setProperty('--cor-secundaria', corSecundaria);
+        }
+
+        function selecionarTamanho(botaoClicado) {
+            const container = botaoClicado.parentElement;
+            const botoes = container.getElementsByClassName('btn-tamanho');
+            for (let b of botoes) {
+                b.classList.remove('ativo');
+            }
+            botaoClicado.classList.add('ativo');
+        }
+
+        function toggleMenu() {
+            const menu = document.getElementById('dropdownMenu');
+            menu.classList.toggle('show');
+        }
+
+        // Fecha o menu se o usuário clicar fora dele
+        window.onclick = function(event) {
+            if (!event.target.matches('.menu-toggle-btn') && !event.target.matches('.menu-toggle-btn *')) {
+                const menu = document.getElementById('dropdownMenu');
+                if (menu.classList.contains('show')) {
+                    menu.classList.remove('show');
+                }
+            }
+        }
+    </script>
 </body>
 </html>
