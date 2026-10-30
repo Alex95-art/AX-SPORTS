@@ -26,7 +26,7 @@ body {
     font-weight: 600;
 }
 
-/* Cabeçalho Ajustado com Título Maior e Menu Lateral */
+/* Cabeçalho */
 header {
     background-color: #ffffff;
     display: flex;
@@ -41,7 +41,6 @@ header {
     gap: 15px;
 }
 
-/* Título da Loja Bem Maior */
 .logo-grande {
     font-size: 1.8rem;
     color: #0f172a;
@@ -87,7 +86,52 @@ header {
     transform: scale(1.2);
 }
 
-/* Menu Lateral Suspenso (Dropdown) */
+/* Ações do Topo (Carrinho e Menu) */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.cart-btn {
+    background-color: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    color: #0f172a;
+    width: 42px;
+    height: 42px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.cart-btn:hover {
+    background-color: var(--cor-primaria);
+    color: white;
+    border-color: var(--cor-primaria);
+}
+
+.cart-count {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background-color: #ef4444;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Menu Hambúrguer */
 .menu-container {
     position: relative;
 }
@@ -96,21 +140,19 @@ header {
     background-color: #0f172a;
     color: white;
     border: none;
-    padding: 10px 18px;
+    width: 42px;
+    height: 42px;
     border-radius: 8px;
-    font-size: 0.95rem;
-    font-weight: 600;
+    font-size: 1rem;
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 8px;
-    transition: background 0.2s, transform 0.2s;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    justify-content: center;
+    transition: background 0.2s;
 }
 
 .menu-toggle-btn:hover {
     background-color: var(--cor-primaria);
-    transform: translateY(-1px);
 }
 
 .dropdown-content {
@@ -125,7 +167,6 @@ header {
     border: 1px solid #e2e8f0;
     overflow: hidden;
     z-index: 1001;
-    animation: fadeIn 0.2s ease;
 }
 
 .dropdown-content.show {
@@ -142,7 +183,6 @@ header {
     font-size: 0.95rem;
     font-weight: 500;
     border-bottom: 1px solid #f1f5f9;
-    transition: background 0.2s, color 0.2s;
 }
 
 .dropdown-content a:hover {
@@ -155,36 +195,175 @@ header {
     color: var(--cor-primaria);
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-8px); }
-    to { opacity: 1; transform: translateY(0); }
+/* Gaveta Lateral do Carrinho (Drawer) */
+.cart-drawer {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 100%;
+    max-width: 380px;
+    height: 100%;
+    background-color: #ffffff;
+    box-shadow: -5px 0 25px rgba(0,0,0,0.15);
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Navegação Padrão (Desktop) */
-.nav-desktop {
+.cart-drawer.open {
+    right: 0;
+}
+
+.cart-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1999;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.cart-overlay.open {
+    display: block;
+    opacity: 1;
+}
+
+.cart-header {
+    padding: 20px;
+    background-color: #0f172a;
+    color: white;
     display: flex;
-    gap: 20px;
+    justify-content: space-between;
     align-items: center;
 }
 
-.nav-desktop a:not(.btn-whats-nav) {
-    color: #475569;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.95rem;
-    transition: color 0.2s;
+.cart-header h3 {
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-.nav-desktop a:not(.btn-whats-nav):hover {
-    color: var(--cor-primaria);
+.close-cart {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.8rem;
+    cursor: pointer;
 }
 
-.btn-whats-nav {
-    background-color: #22c55e !important;
-    color: white !important;
-    padding: 8px 16px;
+.cart-items {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.cart-empty {
+    text-align: center;
+    color: #64748b;
+    margin-top: 40px;
+}
+
+.cart-item {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #f1f5f9;
+    align-items: center;
+}
+
+.cart-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
     border-radius: 8px;
+    background-color: #f1f5f9;
+}
+
+.cart-item-details {
+    flex: 1;
+}
+
+.cart-item-details h4 {
+    font-size: 0.9rem;
+    color: #0f172a;
+    margin-bottom: 2px;
+}
+
+.cart-item-size {
+    font-size: 0.75rem;
+    color: #64748b;
+    margin-bottom: 4px;
+}
+
+.cart-item-price {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #16a34a;
+    margin-bottom: 6px;
+}
+
+.cart-item-qty {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cart-item-qty button {
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.cart-item-qty span {
+    font-size: 0.85rem;
     font-weight: 600;
+}
+
+.cart-footer {
+    padding: 20px;
+    background-color: #f8fafc;
+    border-top: 1px solid #e2e8f0;
+}
+
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    color: #0f172a;
+}
+
+.btn-checkout {
+    width: 100%;
+    background-color: #22c55e;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background 0.2s;
+    box-shadow: 0 4px 10px rgba(34, 197, 94, 0.3);
+}
+
+.btn-checkout:hover {
+    background-color: #16a34a;
 }
 
 /* Hero Banner */
@@ -435,17 +614,20 @@ header {
     justify-content: center;
     gap: 8px;
     width: 100%;
-    background-color: #22c55e;
+    background-color: var(--cor-primaria);
     color: white;
+    border: none;
     padding: 12px;
     border-radius: 8px;
-    text-decoration: none;
+    font-size: 0.95rem;
     font-weight: 700;
+    cursor: pointer;
     transition: background 0.2s, transform 0.2s;
+    box-shadow: 0 2px 4px rgba(2, 132, 199, 0.2);
 }
 
 .btn-comprar:hover {
-    background-color: #16a34a;
+    filter: brightness(0.9);
     transform: translateY(-2px);
 }
 
