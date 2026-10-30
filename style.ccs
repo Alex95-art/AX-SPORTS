@@ -1,4 +1,8 @@
-/* Configurações Globais e Variáveis */
+:root {
+    --cor-primaria: #0284c7;
+    --cor-secundaria: #38bdf8;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -12,89 +16,183 @@ body {
     scroll-behavior: smooth;
 }
 
-/* Barra Superior de Avisos */
+/* Barra Superior */
 .top-bar {
     background-color: #0f172a;
-    color: #38bdf8;
+    color: var(--cor-secundaria);
     text-align: center;
     padding: 10px 15px;
     font-size: 0.85rem;
     font-weight: 600;
-    letter-spacing: 0.5px;
 }
 
-/* Cabeçalho Fixo */
+/* Cabeçalho Ajustado com Título Maior e Menu Lateral */
 header {
     background-color: #ffffff;
-    color: #0f172a;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 18px 5%;
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 1000;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
-header .logo {
-    font-size: 1.4rem;
+/* Título da Loja Bem Maior */
+.logo-grande {
+    font-size: 1.8rem;
     color: #0f172a;
     display: flex;
     align-items: center;
-    gap: 8px;
-    cursor: pointer;
+    gap: 10px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
 }
 
-header .logo i {
-    color: #0284c7;
-    transition: transform 0.3s ease;
+.logo-grande i {
+    color: var(--cor-primaria);
+    font-size: 1.6rem;
 }
 
-header .logo:hover i {
-    transform: rotate(15deg) scale(1.1);
-}
-
-header nav {
+/* Seletor de Cores */
+.theme-switcher {
     display: flex;
-    gap: 25px;
+    align-items: center;
+    gap: 8px;
+    background: #f1f5f9;
+    padding: 6px 12px;
+    border-radius: 20px;
+}
+
+.theme-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #64748b;
+}
+
+.color-btn {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    transition: transform 0.2s;
+}
+
+.color-btn:hover {
+    transform: scale(1.2);
+}
+
+/* Menu Lateral Suspenso (Dropdown) */
+.menu-container {
+    position: relative;
+}
+
+.menu-toggle-btn {
+    background-color: #0f172a;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.2s, transform 0.2s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.menu-toggle-btn:hover {
+    background-color: var(--cor-primaria);
+    transform: translateY(-1px);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 120%;
+    background-color: #ffffff;
+    min-width: 200px;
+    box-shadow: 0 10px 25px -5px rgba(0,0,0,0.15);
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+    z-index: 1001;
+    animation: fadeIn 0.2s ease;
+}
+
+.dropdown-content.show {
+    display: block;
+}
+
+.dropdown-content a {
+    color: #334155;
+    padding: 12px 18px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-bottom: 1px solid #f1f5f9;
+    transition: background 0.2s, color 0.2s;
+}
+
+.dropdown-content a:hover {
+    background-color: #f8fafc;
+    color: var(--cor-primaria);
+}
+
+.dropdown-content a i {
+    width: 20px;
+    color: var(--cor-primaria);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Navegação Padrão (Desktop) */
+.nav-desktop {
+    display: flex;
+    gap: 20px;
     align-items: center;
 }
 
-header nav a {
+.nav-desktop a:not(.btn-whats-nav) {
     color: #475569;
     text-decoration: none;
     font-weight: 500;
     font-size: 0.95rem;
-    transition: color 0.2s ease;
+    transition: color 0.2s;
 }
 
-header nav a:hover {
-    color: #0284c7;
+.nav-desktop a:not(.btn-whats-nav):hover {
+    color: var(--cor-primaria);
 }
 
 .btn-whats-nav {
     background-color: #22c55e !important;
     color: white !important;
-    padding: 10px 18px;
+    padding: 8px 16px;
     border-radius: 8px;
     font-weight: 600;
-    box-shadow: 0 2px 4px rgba(34, 197, 94, 0.2);
-    transition: all 0.25s ease !important;
 }
 
-.btn-whats-nav:hover {
-    background-color: #16a34a !important;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(34, 197, 94, 0.3);
-}
-
-/* Banner Principal (Hero) com Efeito Visual */
+/* Hero Banner */
 .hero {
     background: linear-gradient(rgba(15, 23, 42, 0.88), rgba(15, 23, 42, 0.88)), url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1400&q=80');
     background-size: cover;
     background-position: center;
-    min-height: 70vh;
+    min-height: 65vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -105,7 +203,7 @@ header nav a:hover {
 
 .badge-hero {
     background-color: rgba(56, 189, 248, 0.15);
-    color: #38bdf8;
+    color: var(--cor-secundaria);
     border: 1px solid rgba(56, 189, 248, 0.3);
     padding: 6px 14px;
     border-radius: 20px;
@@ -114,51 +212,45 @@ header nav a:hover {
     display: inline-block;
     margin-bottom: 20px;
     text-transform: uppercase;
-    letter-spacing: 1px;
 }
 
 .hero-content h1 {
-    font-size: 3rem;
+    font-size: 2.8rem;
     margin-bottom: 15px;
-    color: #fff;
     font-weight: 800;
-    line-height: 1.2;
 }
 
 .hero-content p {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     margin-bottom: 30px;
-    max-width: 650px;
+    max-width: 600px;
     margin-left: auto;
     margin-right: auto;
     color: #94a3b8;
 }
 
 .btn-cta {
-    background-color: #38bdf8;
+    background-color: var(--cor-secundaria);
     color: #0f172a;
-    padding: 14px 32px;
+    padding: 12px 28px;
     border-radius: 8px;
     font-weight: 700;
     text-decoration: none;
-    display: inline-block;
-    transition: all 0.25s ease;
     box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
+    transition: transform 0.2s;
 }
 
 .btn-cta:hover {
-    background-color: #0ea5e9;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 16px rgba(56, 189, 248, 0.4);
+    transform: translateY(-2px);
 }
 
-/* Seção de Benefícios (Cards de Confiança) */
+/* Benefícios */
 .beneficios {
     max-width: 1200px;
     margin: -30px auto 40px auto;
     padding: 0 20px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 20px;
     position: relative;
     z-index: 10;
@@ -166,41 +258,35 @@ header nav a:hover {
 
 .beneficio-item {
     background: #ffffff;
-    padding: 25px;
+    padding: 22px;
     border-radius: 12px;
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 18px;
     box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
     border: 1px solid #e2e8f0;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.beneficio-item:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 14px 30px -5px rgba(0, 0, 0, 0.08);
 }
 
 .beneficio-item i {
-    font-size: 2rem;
-    color: #0284c7;
+    font-size: 1.8rem;
+    color: var(--cor-primaria);
 }
 
 .beneficio-item h4 {
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: #0f172a;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
 }
 
 .beneficio-item p {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: #64748b;
 }
 
-/* Vitrine de Produtos */
+/* Vitrine */
 .produtos-container {
     max-width: 1200px;
-    margin: 60px auto;
+    margin: 50px auto;
     padding: 0 20px;
 }
 
@@ -210,15 +296,14 @@ header nav a:hover {
 }
 
 .section-title h2 {
-    font-size: 2.2rem;
+    font-size: 2.1rem;
     color: #0f172a;
     font-weight: 800;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
 }
 
 .section-title p {
     color: #64748b;
-    font-size: 1rem;
 }
 
 .grid-produtos {
@@ -227,25 +312,25 @@ header nav a:hover {
     gap: 30px;
 }
 
-/* Cards de Produtos com Interatividade */
+/* Cards de Produtos */
 .card-produto {
     background: #fff;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
     border: 1px solid #e2e8f0;
     position: relative;
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.3s;
 }
 
 .card-produto:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    transform: translateY(-6px);
+    box-shadow: 0 16px 24px -4px rgba(0, 0, 0, 0.08);
 }
 
 .produto-img-wrapper {
     overflow: hidden;
-    height: 280px;
+    height: 260px;
     background-color: #f1f5f9;
 }
 
@@ -253,61 +338,85 @@ header nav a:hover {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.5s;
 }
 
 .card-produto:hover img {
-    transform: scale(1.08);
+    transform: scale(1.05);
 }
 
-/* Tags de Destaque */
-.tag-time {
+.tag-time, .tag-gym {
     position: absolute;
     top: 15px;
     left: 15px;
-    background-color: #f59e0b;
     color: #fff;
     padding: 5px 12px;
     font-size: 0.75rem;
     font-weight: 700;
     border-radius: 6px;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
     z-index: 2;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
 }
 
-.tag-gym {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    background-color: #0284c7;
-    color: #fff;
-    padding: 5px 12px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    border-radius: 6px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    z-index: 2;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
-}
+.tag-time { background-color: #f59e0b; }
+.tag-gym { background-color: var(--cor-primaria); }
 
 .card-info {
-    padding: 22px;
+    padding: 20px;
 }
 
 .card-info h3 {
     font-size: 1.05rem;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
     color: #0f172a;
-    font-weight: 700;
 }
 
 .categoria {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: #64748b;
+    margin-bottom: 14px;
+}
+
+/* Tamanhos */
+.tamanhos-container {
     margin-bottom: 16px;
+}
+
+.label-tamanho {
+    font-size: 0.8rem;
+    color: #64748b;
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.tamanhos-botoes {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-tamanho {
+    background-color: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    color: #334155;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-tamanho:hover {
+    border-color: var(--cor-primaria);
+    color: var(--cor-primaria);
+}
+
+.btn-tamanho.ativo {
+    background-color: var(--cor-primaria);
+    color: white;
+    border-color: var(--cor-primaria);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .preco-container {
@@ -315,12 +424,11 @@ header nav a:hover {
 }
 
 .preco {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     font-weight: 800;
     color: #16a34a;
 }
 
-/* Botão de Compra Interativo */
 .btn-comprar {
     display: flex;
     align-items: center;
@@ -329,23 +437,16 @@ header nav a:hover {
     width: 100%;
     background-color: #22c55e;
     color: white;
-    text-align: center;
     padding: 12px;
     border-radius: 8px;
     text-decoration: none;
     font-weight: 700;
-    transition: all 0.25s ease;
-    box-shadow: 0 2px 6px rgba(34, 197, 94, 0.25);
+    transition: background 0.2s, transform 0.2s;
 }
 
 .btn-comprar:hover {
     background-color: #16a34a;
     transform: translateY(-2px);
-    box-shadow: 0 6px 14px rgba(34, 197, 94, 0.35);
-}
-
-.btn-comprar:active {
-    transform: translateY(0);
 }
 
 /* Rodapé */
@@ -354,43 +455,24 @@ footer {
     color: #94a3b8;
     text-align: center;
     padding: 40px 20px;
-    margin-top: 80px;
-    border-top: 1px solid #1e293b;
+    margin-top: 60px;
 }
 
 .footer-logo {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     color: #fff;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     display: inline-flex;
     align-items: center;
     gap: 6px;
 }
 
 .footer-logo i {
-    color: #38bdf8;
-}
-
-footer p {
-    font-size: 0.9rem;
-    margin-bottom: 6px;
+    color: var(--cor-primaria);
 }
 
 .copyright {
     color: #64748b;
     font-size: 0.8rem;
-    margin-top: 20px;
-}
-
-/* Responsividade Adaptada para Celular */
-@media (max-width: 768px) {
-    .hero-content h1 {
-        font-size: 2.2rem;
-    }
-    header {
-        padding: 15px 20px;
-    }
-    header nav a:not(.btn-whats-nav) {
-        display: none;
-    }
+    margin-top: 15px;
 }
