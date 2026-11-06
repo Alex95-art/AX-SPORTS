@@ -1,255 +1,482 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AX SPORTS | Loja Oficial • Moda Esportiva e Alta Performance</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Ícones do FontAwesome -->
+
+    <meta name="theme-color" content="#050505">
+    <meta name="description" content="AX SPORTS - Moda esportiva, camisas de futebol e roupas de alta performance.">
+
+    <title>AX SPORTS | Loja Oficial</title>
+
+    <!-- CSS PRINCIPAL -->
+    <link rel="stylesheet" href="./style.css?v=2">
+
+    <!-- Ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
 
-    <!-- Barra Superior de Avisos -->
+    <!-- AVISO SUPERIOR -->
     <div class="top-bar">
         <span>⚡ Envio Para Todo o Brasil • Atendimento Personalizado via WhatsApp</span>
     </div>
 
-    <!-- Cabeçalho Principal -->
+    <!-- CABEÇALHO -->
     <header>
+
         <div class="logo-grande">
-            <i class="fa-solid fa-bolt"></i> <span>AX <strong>SPORTS</strong></span>
+            <i class="fa-solid fa-bolt"></i>
+            <span>AX <strong>SPORTS</strong></span>
         </div>
 
-        <!-- Seletor de Cores -->
+        <!-- SELETOR DE TEMA -->
         <div class="theme-switcher">
             <span class="theme-label">Tema:</span>
-            <button class="color-btn" style="background-color: #0284c7;" onclick="mudarTema('#0284c7', '#38bdf8')" title="Azul"></button>
-            <button class="color-btn" style="background-color: #16a34a;" onclick="mudarTema('#16a34a', '#22c55e')" title="Verde"></button>
-            <button class="color-btn" style="background-color: #7c3aed;" onclick="mudarTema('#7c3aed', '#a855f7')" title="Roxo"></button>
-            <button class="color-btn" style="background-color: #0f172a;" onclick="mudarTema('#0f172a', '#475569')" title="Preto"></button>
+
+            <button class="color-btn"
+                style="background-color:#087cff"
+                onclick="mudarTema('#087cff','#20a4ff')"
+                title="Azul"></button>
+
+            <button class="color-btn"
+                style="background-color:#16a34a"
+                onclick="mudarTema('#16a34a','#22c55e')"
+                title="Verde"></button>
+
+            <button class="color-btn"
+                style="background-color:#7c3aed"
+                onclick="mudarTema('#7c3aed','#a855f7')"
+                title="Roxo"></button>
+
+            <button class="color-btn"
+                style="background-color:#111111"
+                onclick="mudarTema('#087cff','#20a4ff')"
+                title="Preto e azul"></button>
         </div>
 
-        <!-- Botões do Topo (Carrinho e Menu) -->
+        <!-- AÇÕES DO CABEÇALHO -->
         <div class="header-actions">
-            <!-- Botão do Carrinho -->
-            <button class="cart-btn" onclick="toggleCart()" title="Abrir Carrinho">
+
+            <button class="cart-btn"
+                onclick="toggleCart()"
+                title="Abrir carrinho">
+
                 <i class="fa-solid fa-cart-shopping"></i>
                 <span id="cartCount" class="cart-count">0</span>
+
             </button>
 
-            <!-- Menu Lateral (Hambúrguer) -->
+            <!-- MENU -->
             <div class="menu-container">
-                <button class="menu-toggle-btn" onclick="toggleMenu()" title="Abrir Menu">
+
+                <button class="menu-toggle-btn"
+                    onclick="toggleMenu()"
+                    title="Abrir menu">
+
                     <i class="fa-solid fa-bars"></i>
+
                 </button>
+
                 <div id="dropdownMenu" class="dropdown-content">
-                    <a href="#produtos"><i class="fa-solid fa-store"></i> Ver Vitrine</a>
-                    <a href="#beneficios"><i class="fa-solid fa-shield-halved"></i> Nossos Diferenciais</a>
-                    <a href="https://wa.me/5500000000000?text=Olá!%20Vim%20pelo%20site%20da%20AX%20SPORTS." target="_blank"><i class="fa-solid fa-headset"></i> Suporte Geral</a>
+
+                    <a href="#produtos">
+                        <i class="fa-solid fa-store"></i>
+                        Ver Vitrine
+                    </a>
+
+                    <a href="#beneficios">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        Nossos Diferenciais
+                    </a>
+
+                    <a href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20AX%20SPORTS."
+                        target="_blank"
+                        rel="noopener noreferrer">
+
+                        <i class="fa-solid fa-headset"></i>
+                        Suporte Geral
+
+                    </a>
+
                 </div>
             </div>
         </div>
+
     </header>
 
-    <!-- Gaveta Lateral do Carrinho (Drawer) -->
+    <!-- CARRINHO -->
     <div id="cartDrawer" class="cart-drawer">
+
         <div class="cart-header">
-            <h3><i class="fa-solid fa-bag-shopping"></i> Sua Sacola</h3>
-            <button class="close-cart" onclick="toggleCart()">&times;</button>
+
+            <h3>
+                <i class="fa-solid fa-bag-shopping"></i>
+                Sua Sacola
+            </h3>
+
+            <button class="close-cart" onclick="toggleCart()">
+                &times;
+            </button>
+
         </div>
+
         <div class="cart-items" id="cartItemsContainer">
-            <p class="cart-empty">Sua sacola está vazia.</p>
+
+            <p class="cart-empty">
+                Sua sacola está vazia.
+            </p>
+
         </div>
+
         <div class="cart-footer">
+
             <div class="cart-total">
                 <span>Total:</span>
                 <strong id="cartTotalPrice">R$ 0,00</strong>
             </div>
-            <button class="btn-checkout" onclick="finalizarCompraWhatsApp()">
-                <i class="fa-brands fa-whatsapp"></i> Finalizar Pedido no WhatsApp
-            </button>
-        </div>
-    </div>
-    <div id="cartOverlay" class="cart-overlay" onclick="toggleCart()"></div>
 
-    <!-- Banner Principal (Hero) -->
-    <section class="hero">
-        <div class="hero-content">
-            <span class="badge-hero">Coleção Oficial</span>
-            <h1>Sua Paixão em Campo e no Treino</h1>
-            <p>Vista os mantos sagrados dos principais times do mundo e roupas de alta performance com qualidade premium.</p>
-            <div class="hero-buttons">
-                <a href="#produtos" class="btn-cta">Explorar Vitrine</a>
-            </div>
+            <button class="btn-checkout"
+                onclick="finalizarCompraWhatsApp()">
+
+                <i class="fa-brands fa-whatsapp"></i>
+                Finalizar Pedido no WhatsApp
+
+            </button>
+
         </div>
+
+    </div>
+
+    <div id="cartOverlay"
+        class="cart-overlay"
+        onclick="toggleCart()">
+    </div>
+
+    <!-- BANNER PRINCIPAL -->
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <span class="badge-hero">
+                COLEÇÃO OFICIAL
+            </span>
+
+            <h1>
+                Sua Paixão em Campo e no Treino
+            </h1>
+
+            <p>
+                Vista os mantos sagrados dos principais times
+                do mundo e roupas de alta performance com
+                qualidade premium.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#produtos" class="btn-cta">
+                    Explorar Vitrine
+                </a>
+
+            </div>
+
+        </div>
+
     </section>
 
-    <!-- Seção de Benefícios -->
+    <!-- BENEFÍCIOS -->
     <section id="beneficios" class="beneficios">
+
         <div class="beneficio-item">
+
             <i class="fa-solid fa-shield-halved"></i>
+
             <div>
                 <h4>Compra 100% Segura</h4>
                 <p>Atendimento transparente via WhatsApp</p>
             </div>
+
         </div>
+
         <div class="beneficio-item">
+
             <i class="fa-solid fa-truck-fast"></i>
+
             <div>
                 <h4>Entrega Garantida</h4>
                 <p>Enviamos com código de rastreio</p>
             </div>
+
         </div>
+
         <div class="beneficio-item">
+
             <i class="fa-solid fa-star"></i>
+
             <div>
                 <h4>Qualidade Premium</h4>
                 <p>Tecidos de alta durabilidade</p>
             </div>
+
         </div>
+
     </section>
 
-    <!-- Vitrine de Produtos -->
+    <!-- VITRINE DE PRODUTOS -->
     <section id="produtos" class="produtos-container">
+
         <div class="section-title">
+
             <h2>Destaques da Semana</h2>
-            <p>Escolha o tamanho e adicione à sua sacola</p>
+
+            <p>
+                Escolha o tamanho e adicione à sua sacola
+            </p>
+
         </div>
-        
+
         <div class="grid-produtos">
 
-            <!-- Produto 1 -->
-            <div class="card-produto" data-id="1" data-nome="Camisa Titular Temporada" data-preco="149.90" data-img="https://images.unsplash.com/photo-1580087600307-a64ddf74044a?auto=format&fit=crop&w=600&q=80">
+            <!-- PRODUTO 1 -->
+            <div class="card-produto"
+                data-id="1"
+                data-nome="Camisa Titular Temporada"
+                data-preco="149.90"
+                data-img="https://images.unsplash.com/photo-1580087600307-a64ddf74044a?auto=format&fit=crop&w=600&q=80">
+
                 <span class="tag-time">Mais Vendida</span>
+
                 <div class="produto-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1580087600307-a64ddf74044a?auto=format&fit=crop&w=600&q=80" alt="Camisa de Time">
+                    <img
+                        src="https://images.unsplash.com/photo-1580087600307-a64ddf74044a?auto=format&fit=crop&w=600&q=80"
+                        alt="Camisa Titular Temporada"
+                        loading="lazy">
                 </div>
+
                 <div class="card-info">
+
                     <h3>Camisa Titular Temporada</h3>
-                    <p class="categoria">Futebol • Versão Torcedor</p>
-                    
+
+                    <p class="categoria">
+                        Futebol • Versão Torcedor
+                    </p>
+
                     <div class="tamanhos-container">
+
                         <span class="label-tamanho">Tamanho:</span>
+
                         <div class="tamanhos-botoes">
                             <button class="btn-tamanho" onclick="selecionarTamanho(this)">P</button>
                             <button class="btn-tamanho ativo" onclick="selecionarTamanho(this)">M</button>
                             <button class="btn-tamanho" onclick="selecionarTamanho(this)">G</button>
                             <button class="btn-tamanho" onclick="selecionarTamanho(this)">GG</button>
                         </div>
+
                     </div>
 
                     <div class="preco-container">
                         <span class="preco">R$ 149,90</span>
                     </div>
-                    <button class="btn-comprar" onclick="adicionarAoCarrinho(this)">
-                        <i class="fa-solid fa-cart-plus"></i> Adicionar à Sacola
+
+                    <button class="btn-comprar"
+                        onclick="adicionarAoCarrinho(this)">
+
+                        <i class="fa-solid fa-cart-plus"></i>
+                        Adicionar à Sacola
+
                     </button>
+
                 </div>
             </div>
 
-            <!-- Produto 2 -->
-            <div class="card-produto" data-id="2" data-nome="Camisa Europeia Atual" data-preco="159.90" data-img="https://images.unsplash.com/photo-1518063319789-7217e6adc59e?auto=format&fit=crop&w=600&q=80">
+            <!-- PRODUTO 2 -->
+            <div class="card-produto"
+                data-id="2"
+                data-nome="Camisa Europeia Atual"
+                data-preco="159.90"
+                data-img="https://images.unsplash.com/photo-1518063319789-7217e6adc59e?auto=format&fit=crop&w=600&q=80">
+
                 <span class="tag-time">Lançamento</span>
+
                 <div class="produto-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1518063319789-7217e6adc59e?auto=format&fit=crop&w=600&q=80" alt="Camisa Internacional">
+                    <img
+                        src="https://images.unsplash.com/photo-1518063319789-7217e6adc59e?auto=format&fit=crop&w=600&q=80"
+                        alt="Camisa Europeia Atual"
+                        loading="lazy">
                 </div>
+
                 <div class="card-info">
+
                     <h3>Camisa Europeia Atual</h3>
-                    <p class="categoria">Futebol Internacional</p>
-                    
+
+                    <p class="categoria">
+                        Futebol Internacional
+                    </p>
+
                     <div class="tamanhos-container">
+
                         <span class="label-tamanho">Tamanho:</span>
+
                         <div class="tamanhos-botoes">
                             <button class="btn-tamanho" onclick="selecionarTamanho(this)">P</button>
                             <button class="btn-tamanho ativo" onclick="selecionarTamanho(this)">M</button>
                             <button class="btn-tamanho" onclick="selecionarTamanho(this)">G</button>
                             <button class="btn-tamanho" onclick="selecionarTamanho(this)">GG</button>
                         </div>
+
                     </div>
 
                     <div class="preco-container">
                         <span class="preco">R$ 159,90</span>
                     </div>
-                    <button class="btn-comprar" onclick="adicionarAoCarrinho(this)">
-                        <i class="fa-solid fa-cart-plus"></i> Adicionar à Sacola
+
+                    <button class="btn-comprar"
+                        onclick="adicionarAoCarrinho(this)">
+
+                        <i class="fa-solid fa-cart-plus"></i>
+                        Adicionar à Sacola
+
                     </button>
+
                 </div>
             </div>
 
-            <!-- Produto 3 -->
-            <div class="card-produto" data-id="3" data-nome="Camiseta Dry-Fit Treino" data-preco="79.90" data-img="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=600&q=80">
+            <!-- PRODUTO 3 -->
+            <div class="card-produto"
+                data-id="3"
+                data-nome="Camiseta Dry-Fit Treino"
+                data-preco="79.90"
+                data-img="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=600&q=80">
+
                 <span class="tag-gym">Academia</span>
+
                 <div class="produto-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=600&q=80" alt="Roupa de Academia">
+                    <img
+                        src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=600&q=80"
+                        alt="Camiseta Dry-Fit Treino"
+                        loading="lazy">
                 </div>
+
                 <div class="card-info">
+
                     <h3>Camiseta Dry-Fit Treino</h3>
-                    <p class="categoria">Moda Fitness • Alta Absorção</p>
-                    
+
+                    <p class="categoria">
+                        Moda Fitness • Alta Absorção
+                    </p>
+
                     <div class="tamanhos-container">
+
                         <span class="label-tamanho">Tamanho:</span>
+
                         <div class="tamanhos-botoes">
                             <button class="btn-tamanho" onclick="selecionarTamanho(this)">P</button>
                             <button class="btn-tamanho ativo" onclick="selecionarTamanho(this)">M</button>
                             <button class="btn-tamanho" onclick="selecionarTamanho(this)">G</button>
                             <button class="btn-tamanho" onclick="selecionarTamanho(this)">GG</button>
                         </div>
+
                     </div>
 
                     <div class="preco-container">
                         <span class="preco">R$ 79,90</span>
                     </div>
-                    <button class="btn-comprar" onclick="adicionarAoCarrinho(this)">
-                        <i class="fa-solid fa-cart-plus"></i> Adicionar à Sacola
+
+                    <button class="btn-comprar"
+                        onclick="adicionarAoCarrinho(this)">
+
+                        <i class="fa-solid fa-cart-plus"></i>
+                        Adicionar à Sacola
+
                     </button>
+
                 </div>
             </div>
 
-            <!-- Produto 4 -->
-            <div class="card-produto" data-id="4" data-nome="Camisa Seleção Mundial" data-preco="149.90" data-img="https://images.unsplash.com/photo-1577471488278-16eec3ffccbc?auto=format&fit=crop&w=600&q=80">
+            <!-- PRODUTO 4 -->
+            <div class="card-produto"
+                data-id="4"
+                data-nome="Camisa Seleção Mundial"
+                data-preco="149.90"
+                data-img="https://images.unsplash.com/photo-1577471488278-16eec3ffccbc?auto=format&fit=crop&w=600&q=80">
+
                 <span class="tag-time">Edição Limitada</span>
+
                 <div class="produto-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1577471488278-16eec3ffccbc?auto=format&fit=crop&w=600&q=80" alt="Camisa de Seleção">
+                    <img
+                        src="https://images.unsplash.com/photo-1577471488278-16eec3ffccbc?auto=format&fit=crop&w=600&q=80"
+                        alt="Camisa Seleção Mundial"
+                        loading="lazy">
                 </div>
+
                 <div class="card-info">
+
                     <h3>Camisa Seleção Mundial</h3>
-                    <p class="categoria">Futebol • Edição Especial</p>
-                    
+
+                    <p class="categoria">
+                        Futebol • Edição Especial
+                    </p>
+
                     <div class="tamanhos-container">
+
                         <span class="label-tamanho">Tamanho:</span>
+
                         <div class="tamanhos-botoes">
                             <button class="btn-tamanho" onclick="selecionarTamanho(this)">P</button>
                             <button class="btn-tamanho ativo" onclick="selecionarTamanho(this)">M</button>
                             <button class="btn-tamanho" onclick="selecionarTamanho(this)">G</button>
                             <button class="btn-tamanho" onclick="selecionarTamanho(this)">GG</button>
                         </div>
+
                     </div>
 
                     <div class="preco-container">
                         <span class="preco">R$ 149,90</span>
                     </div>
-                    <button class="btn-comprar" onclick="adicionarAoCarrinho(this)">
-                        <i class="fa-solid fa-cart-plus"></i> Adicionar à Sacola
+
+                    <button class="btn-comprar"
+                        onclick="adicionarAoCarrinho(this)">
+
+                        <i class="fa-solid fa-cart-plus"></i>
+                        Adicionar à Sacola
+
                     </button>
+
                 </div>
             </div>
 
         </div>
+
     </section>
 
-    <!-- Rodapé -->
+    <!-- RODAPÉ -->
     <footer>
+
         <div class="footer-content">
+
             <div class="footer-logo">
-                <i class="fa-solid fa-bolt"></i> AX <strong>SPORTS</strong>
+                <i class="fa-solid fa-bolt"></i>
+                AX <strong>SPORTS</strong>
             </div>
-            <p>Sua loja especializada em artigos esportivos e camisas de time.</p>
-            <p class="copyright">&copy; 2026 AX SPORTS. Todos os direitos reservados.</p>
+
+            <p>
+                Sua loja especializada em artigos esportivos
+                e camisas de time.
+            </p>
+
+            <p class="copyright">
+                &copy; 2026 AX SPORTS. Todos os direitos reservados.
+            </p>
+
         </div>
+
     </footer>
 
-    <!-- Conectando o arquivo JavaScript externo -->
-    <script src="script.js"></script>
+    <!-- JAVASCRIPT -->
+    <script src="./script.js"></script>
+
 </body>
 </html>
+
